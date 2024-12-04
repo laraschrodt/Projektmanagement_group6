@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call A Bike</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body>
+<div id="map"></div>
+<div id="control-panel">
+    <h1 class="title">
+        <img src="img/logo.png" alt="Bike Icon" class="icon">
+        <span>Call A Bike</span>
+    </h1>
+    <p id="motto">Praktisch · Einfach · Flexibel</p>
+    <br>
+    <form>
+        <h3>Adresseingabe:</h3>
+        <input type="text" id="address" name="address">
+
+        <h3>Wähle eine Visualisierung:</h3>
+        <input type="checkbox" id="stations" checked> Stationen anzeigen<br>
+        <input type="checkbox" id="trend-lines" checked> Trend-Linien anzeigen<br>
+
+        <h3>Filter für Stationen:</h3>
+        <input type="radio" name="filter" id="pickups"> Nur Abholungen anzeigen<br>
+        <input type="radio" name="filter" id="dropoffs"> Nur Abgaben anzeigen<br>
+
+        <h3>Buchungsportal:</h3>
+        <input type="text" id="portal" name="portal">
+
+        <h3>Wochentag wählen:</h3>
+        <input type="text" id="weekday" name="weekday">
+    </form>
+</div>
+<script src="js/map.js"></script>
+</body>
+
+</html>
