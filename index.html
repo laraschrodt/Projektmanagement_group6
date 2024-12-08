@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/markers.js"></script>
+    <script src="js/map.js"></script>
 </head>
 
-<body>
+<body onload="initMap()">
 <div id="map"></div>
 <div id="control-panel">
     <h1 class="title">
@@ -40,7 +42,6 @@
         <input type="text" id="weekday" name="weekday">
     </form>
 </div>
-<script src="js/map.js"></script>
 </body>
 
 </html>
