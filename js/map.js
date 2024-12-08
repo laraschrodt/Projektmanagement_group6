@@ -1,12 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const map = L.map('map', {
-        center: [50.10, 8.68],
-        zoom: 13,
+function initMap() {
+    var map = L.map('map', {
+        center: [8.67, 50.11],
+        zoom: 18
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    map.zoomControl.setPosition('topright');
-});
+    initMarkers();
+
+    fetchStationsAndShowMarkers(map);
+
+    return map;
+}
