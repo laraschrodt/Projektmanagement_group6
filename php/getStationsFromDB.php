@@ -5,7 +5,7 @@ $verbindung = include('db-connection.php');
 $table = "Fahrradstationen";
 $stations = [];
 
-$sql = "SELECT StationID, StationName, Latitude, Longitude FROM $table";
+$sql = "SELECT StationID, StationName, Latitude, Longitude, Startvorgaenge, Endvorgaenge FROM $table";
 $result = $verbindung->query($sql);
 
 if ($result && $result->num_rows > 0) {
@@ -15,6 +15,8 @@ if ($result && $result->num_rows > 0) {
             "station_name" => $row['StationName'],
             "lat" => floatval($row['Latitude']),
             "long" => floatval($row['Longitude']),
+            "startvorgaenge" => floatval($row['Startvorgaenge']),
+            "endvorgaenge" => floatval($row['Endvorgaenge']),
         ];
     }
 } else {
@@ -26,6 +28,3 @@ if ($result && $result->num_rows > 0) {
 $verbindung->close();
 echo json_encode($stations, JSON_INVALID_UTF8_SUBSTITUTE);
 ?>
-
-
-
