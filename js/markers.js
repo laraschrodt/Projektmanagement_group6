@@ -64,15 +64,15 @@ function fetchStationsAndShowMarkers(map) {
     xhr.send();
 }
 
-function showMarker(myData, map) {
+function showMarker(station, map) {
 
-    var marker = new L.marker([myData.long, myData.lat], {
+    var marker = new L.marker([station.long, station.lat], {
         clickable: true,
         icon: redMarker,
-    }).bindPopup(`<p><b>${myData.station_name}</b><br>
-                        Station ID: ${myData.station_id}<br>
-                           Lat: ${myData.lat}
-                            Long: ${myData.long}</p>`)
+    }).bindPopup(`<p><b>Station: ${station.station_name}</b><br>
+                        ID: ${station.station_id}<br>
+                        Startvorgänge: ${station.startvorgaenge}<br>
+                        Endvorgänge: ${station.endvorgaenge}<br>`)
         .addTo(map);
 
     features.push(marker);
