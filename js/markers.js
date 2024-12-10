@@ -43,7 +43,7 @@ function initMarkers() {
 
 function fetchStationsAndShowMarkers(map) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', './php/getStations.php', true);
+    xhr.open('GET', './php/getStationsFromDB.php', true);
 
     xhr.onload = () => {
         if (xhr.status === 200) {
