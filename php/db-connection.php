@@ -8,3 +8,4 @@ $verbindung = new mysqli($server, $username, $password, $dbname) or die ("Verbin
 
 return $verbindung;
 ?>
+

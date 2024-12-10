@@ -80,3 +80,4 @@ function showMarker(station, map) {
     var group = new L.featureGroup(features);
     map.fitBounds(group.getBounds());
 }
+

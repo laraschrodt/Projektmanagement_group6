@@ -28,6 +28,3 @@ if ($result && $result->num_rows > 0) {
 $verbindung->close();
 echo json_encode($stations, JSON_INVALID_UTF8_SUBSTITUTE);
 ?>
-
-
-
