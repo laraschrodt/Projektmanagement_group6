@@ -1,6 +1,6 @@
 var features = [];
-var group;
 
+/* Ajax Anfrage mit .json aus getStationsFromDB.php */
 function fetchStationsAndShowMarkers(map) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', './php/getStationsFromDB.php', true);
@@ -24,17 +24,6 @@ function fetchStationsAndShowMarkers(map) {
     };
 
     xhr.send();
-}
-
-function checkboxListener(map) {
-    const checkbox = document.getElementById('stations');
-    checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-            features.forEach(feature => feature.addTo(map));
-        } else {
-            features.forEach(feature => feature.remove());
-        }
-    });
 }
 
 function showMarker(station, map) {
