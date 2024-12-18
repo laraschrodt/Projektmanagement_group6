@@ -1,7 +1,9 @@
 /* Inizialisiert die Karte*/
+var map;
+
 
 function initMap() {
-    var map = L.map('map', {
+    map = L.map('map', {
         center: [50.112, 8.684],
         zoom: 15
     });
