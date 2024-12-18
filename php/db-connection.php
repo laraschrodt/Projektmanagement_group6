@@ -1,3 +1,5 @@
+<!-- DB Verbindung -->
+
 <?php
 $server = "localhost";
 $username = "root";
