@@ -1,6 +1,6 @@
-<!-- Holt die Daten mit einer SQL Anfrage aus der DB und gibt sie als .json an markers.js für die ajax Anfrage -->
-
 <?php
+/* für die ajax anfrage in markers.js */
+
 header('Content-Type: application/json; charset=utf-8');
 $verbindung = include('db-connection.php');
 

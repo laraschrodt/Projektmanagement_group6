@@ -1,6 +1,7 @@
 var features = [];
+var group;
 
-/* Ajax Anfrage mit .json aus getStationsFromDB.php */
+/* asynchrone ajax Anfrage mit der JSON aus getStationsFromDB.php */
 function fetchStationsAndShowMarkers(map) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', './php/getStationsFromDB.php', true);
@@ -26,6 +27,8 @@ function fetchStationsAndShowMarkers(map) {
     xhr.send();
 }
 
+
+/* Packt jeden Datensatz aus der JSON auf die Karte */
 function showMarker(station, map) {
     var marker = new L.marker([station.long, station.lat], {
         clickable: true,
