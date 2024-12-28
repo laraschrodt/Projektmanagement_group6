@@ -14,7 +14,8 @@ function fetchStationsAndShowMarkers(map) {
                 showMarker(station, map);
             });
 
-            checkboxListener(map);
+            checkboxListenerForPins(map);
+
         } else {
             console.error("Fehler beim Laden der Stationsdaten:", xhr.statusText);
         }
@@ -27,6 +28,17 @@ function fetchStationsAndShowMarkers(map) {
     xhr.send();
 }
 
+/* Listener um mit der Checkbox die Stationen ein und auszublenden */
+function checkboxListenerForPins(map) {
+    const checkbox = document.getElementById('stations');
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            features.forEach(feature => feature.addTo(map));
+        } else {
+            features.forEach(feature => feature.remove());
+        }
+    });
+}
 
 /* Packt jeden Datensatz aus der JSON auf die Karte */
 function showMarker(station, map) {
@@ -44,4 +56,3 @@ function showMarker(station, map) {
     group = new L.featureGroup(features);
     map.fitBounds(group.getBounds());
 }
-

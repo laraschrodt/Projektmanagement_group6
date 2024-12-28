@@ -19,6 +19,7 @@
     <script src="js/markers.js"></script>
     <script src="js/map.js"></script>
     <script src="js/markerColors.js"></script>
+    <script src="js/lines.js"></script>
 </head>
 
 <body onload="initMap()">
@@ -30,13 +31,17 @@
     </h1>
     <p id="motto">Praktisch · Einfach · Flexibel</p>
     <br>
-    <form>
+    <div>
         <h3>Adresseingabe:</h3>
         <input type="text" id="address" name="address">
 
         <h3>Wähle eine Visualisierung:</h3>
         <input type="checkbox" id="stations" checked> Stationen anzeigen<br>
         <input type="checkbox" id="trend-lines" checked> Trend-Linien anzeigen<br>
+
+        <h3>Meistgenutzte Verbindungen:</h3>
+        <input type="number" id="lineCount" min="1" />
+        <button id="loadLines">Laden</button>
 
         <h3>Filter für Stationen:</h3>
         <input type="radio" name="filter" id="pickups">Nur Abholungen anzeigen<br>
@@ -48,7 +53,7 @@
 
         <h3>Wochentag wählen:</h3>
         <input type="text" id="weekday" name="weekday">
-    </form>
+    </div>
 </div>
 </body>
 
