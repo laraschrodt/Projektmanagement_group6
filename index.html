@@ -20,6 +20,14 @@
     <script src="js/map.js"></script>
     <script src="js/markerColors.js"></script>
     <script src="js/lines.js"></script>
+
+    <!-- Zum Wechseln auf die Statistik-Seite-->
+    <script>
+        function loadStatistics() {
+            const url = "html/statistics.html";
+            window.open(url, "_blank");
+        }
+    </script>
 </head>
 
 <body onload="initMap()">
@@ -52,7 +60,9 @@
         <input type="text" id="portal" name="portal">
 
         <h3>Wochentag wählen:</h3>
-        <input type="text" id="weekday" name="weekday">
+        <input type="text" id="weekday" name="weekday"><br><br>
+
+        <button onclick="loadStatistics()">Statistiken</button>
     </div>
 </div>
 </body>
