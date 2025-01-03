@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistiken</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../js/showCharts.js" defer></script>
+
+    <link rel="stylesheet" href="../css/statistics-style.css">
+</head>
+<body>
+<h1>Statistiken</h1>
+
+<div class="container">
+    <div class="row">
+        <!-- Diagramm 1 -->
+        <div class="chart-wrapper">
+            <h2>Häufigste Start- und Endstationen</h2>
+            <canvas id="stationChart"></canvas>
+        </div>
+        <!-- Diagarmm 2 -->
+        <div class="chart-wrapper">
+            <h2>Meist gebuchte Wochentage</h2>
+            <canvas id="weekdayChart"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Diagarmm 3 -->
+        <div class="chart-wrapper">
+            <h2>Meist genutzte Buchungsportale</h2>
+            <canvas id="bookingChart"></canvas>
+        </div>
+        <!-- Diagarmm 4 -->
+        <div class="chart-wrapper">
+            <h2>Meiste Abholungen/Abgaben nach Tageszeit</h2>
+            <canvas id="timeChart"></canvas>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
