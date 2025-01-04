@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-$verbindung = include('../db-connection.php');
+$verbindung = include('./db-connection.php');
 
 $input = $_GET['query'] ?? '';
 
