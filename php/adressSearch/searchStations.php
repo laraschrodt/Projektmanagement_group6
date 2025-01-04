@@ -6,14 +6,16 @@ $input = $_GET['query'] ?? '';
 
 if ($input) {
     $input = $verbindung->real_escape_string($input);
-    $sql = "SELECT StationName FROM Fahrradstationen WHERE StationName LIKE '%$input%' LIMIT 10";
+    $sql = "SELECT StationName, Latitude, Longitude FROM Fahrradstationen WHERE StationName LIKE '%$input%' LIMIT 10";
     $result = $verbindung->query($sql);
 
     $stations = [];
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $stations[] = [
-                "station_name" => $row['StationName']
+                "station_name" => $row['StationName'],
+                "latitude" => (float)$row['Latitude'],
+                "longitude" => (float)$row['Longitude']
             ];
         }
         echo json_encode($stations, JSON_INVALID_UTF8_SUBSTITUTE);
@@ -25,4 +27,3 @@ if ($input) {
 }
 
 $verbindung->close();
-
