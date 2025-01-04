@@ -1,6 +1,6 @@
 var map;
 
-/* Inizialisiert die Karte */
+/* Initialisiert die Karte */
 function initMap() {
     map = L.map('map', {
         center: [50.112, 8.684],
@@ -14,7 +14,7 @@ function initMap() {
     initMarkers();
     fetchStationsAndShowMarkers(map);
 
-    /* Event-Listener für den Button */
+    /* Event-Listener für den "Laden"-Button */
     document.getElementById('loadLines').addEventListener('click', () => {
         const lineCount = parseInt(document.getElementById('lineCount').value, 10);
         if (lineCount > 0) {
