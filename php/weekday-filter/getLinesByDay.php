@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-$verbindung = include('db-connection.php');
+$verbindung = include('../db-connection.php');
 
 $day = $_GET['day'] ?? 'all';
 $lines = [];
@@ -48,4 +48,4 @@ if ($result && $result->num_rows > 0) {
 }
 
 echo json_encode($lines, JSON_INVALID_UTF8_SUBSTITUTE);
-?>
+

@@ -6,19 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Call A Bike</title>
 
+    <!-- CSS Dateien -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/legend.css">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
-    <!-- Eingebundene Dateien -->
+    <!-- JS Dateien -->
     <script src="js/markers.js"></script>
     <script src="js/map.js"></script>
     <script src="js/markerColors.js"></script>
@@ -26,6 +23,11 @@
     <script src="js/portalWeekdayFilter.js" defer></script>
     <script src="js/adressSearch.js"></script>
     <script src="js/legend.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
     <!-- Zum Wechseln auf die Statistik-Seite -->
     <script>
@@ -64,19 +66,23 @@
         <input type="radio" name="filter" id="both">Beides<br>
 
         <h3>Buchungsportal:</h3>
-<!--        <input type="text" id="portal" name="portal">-->
         <select id="portal-dropdown">
-            <option value="none" selected hidden>Bitte wählen</option>
+            <option value="none">Keine</option>
             <option value="all">Alle</option>
-            <option value="iPhone CAB">iPhone CAB</option>
             <option value="Android CAB">Android CAB</option>
+            <option value="Android SRH">Android SRH</option>
+            <option value="iPhone CAB">iPhone CAB</option>
+            <option value="iPhone KON">iPhone KON</option>
+            <option value="iPhone SRH">iPhone SRH</option>
             <option value="IVR">IVR</option>
+            <option value="LIDL-BIKE">LIDL-BIKE</option>
+            <option value="Techniker F_5 (-67212-)">Techniker F_5 (-67212-)</option>
+            <option value="Windows">Windows</option>
         </select>
 
         <h3>Wochentag wählen:</h3>
-
         <select id="day-dropdown">
-            <option value="none" selected hidden>Bitte wählen</option>
+            <option value="none">Keine</option>
             <option value="all">Alle</option>
             <option value="Mo">Montag</option>
             <option value="Di">Dienstag</option>
