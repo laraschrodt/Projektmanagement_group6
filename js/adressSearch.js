@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* AJAX-Anfrage an searchStations.php senden */
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `./php/searchStations.php?query=${encodeURIComponent(query)}`, true);
+        xhr.open("GET", `./php/adress-search/searchStations.php?query=${encodeURIComponent(query)}`, true);
 
         xhr.onload = function () {
             if (xhr.status === 200) {
