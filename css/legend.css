@@ -21,51 +21,51 @@
 
 #legend-content {
     position: fixed;
-    bottom: 80px; /* Über dem Button platzieren */
+    bottom: 80px;
     right: 20px;
     background-color: white;
     border: 2px solid #ccc;
     border-radius: 5px;
-    padding: 20px; /* Vergrößerter Abstand innen */
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1001;
-    width: 320px; /* Vergrößerte Breite */
+    width: 320px;
 }
 
 #legend-content p {
-    margin: 10px 0; /* Gleichmäßiger Abstand zwischen Zeilen */
-    font-size: 15px; /* Leicht größere Schrift */
-    display: flex; /* Ermöglicht saubere Ausrichtung */
-    align-items: flex-start; /* Text beginnt oben */
-    flex-wrap: wrap; /* Zeilenumbruch aktivieren */
-    line-height: 1.5; /* Zeilenhöhe für besseren Abstand */
+    margin: 10px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    line-height: 1.5;
 }
 
 #legend-content p::before {
     content: "";
     display: inline-block;
-    width: 14px; /* Größere Punkte */
+    width: 14px;
     height: 14px;
     border-radius: 50%;
-    margin-right: 10px; /* Abstand zwischen Punkt und Text */
-    margin-top: 4px; /* Punkt vertikal ausrichten */
-    flex-shrink: 0; /* Punkt bleibt immer in der ersten Zeile */
+    margin-right: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
 }
 
 #legend-content p:nth-child(1)::before {
-    background-color: green; /* Grün */
+    background-color: green;
 }
 
 #legend-content p:nth-child(2)::before {
-    background-color: yellow; /* Gelb */
+    background-color: yellow;
 }
 
 #legend-content p:nth-child(3)::before {
-    background-color: red; /* Rot */
+    background-color: red;
 }
 
 #legend-content button {
-    background-color: #d9534f; /* Rot für Schließen */
+    background-color: #d9534f;
     color: white;
     border: none;
     padding: 5px 10px;

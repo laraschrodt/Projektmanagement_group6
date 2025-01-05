@@ -7,6 +7,7 @@ $lines = [];
 
 $limit = intval($_GET['limit']);
 
+/* FIXME: Linien werden ncht richig angezeigt */
 $sql = "
     SELECT 
         Start_Lat, 
@@ -43,4 +44,3 @@ if ($result && $result->num_rows > 0) {
 
 $verbindung->close();
 echo json_encode($lines, JSON_INVALID_UTF8_SUBSTITUTE);
-?>
