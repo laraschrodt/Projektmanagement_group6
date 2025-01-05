@@ -1,10 +1,9 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-$verbindung = include('db-connection.php');
+$verbindung = include('../db-connection.php');
 
 $portal = $_GET['portal'] ?? 'all';
 $lines = [];
-
 
 $sql = "
     SELECT 
@@ -14,7 +13,7 @@ $sql = "
         Ende_Long, 
         Start_Station, 
         Ende_Station, 
-        Buchungsportal, -- Hinzufügen des Buchungsportals
+        Buchungsportal, 
         COUNT(*) AS count
     FROM fahrradbuchungen
 ";
@@ -39,7 +38,7 @@ if ($result && $result->num_rows > 0) {
             "end_long" => floatval($row['Ende_Long']),
             "start_station" => $row['Start_Station'],
             "end_station" => $row['Ende_Station'],
-            "buchungsportal" => $row['Buchungsportal'], // Buchungsportal in die Antwort einfügen
+            "buchungsportal" => $row['Buchungsportal'],
             "count" => intval($row['count'])
         ];
     }
@@ -51,4 +50,3 @@ if ($result && $result->num_rows > 0) {
 
 $verbindung->close();
 echo json_encode($lines, JSON_INVALID_UTF8_SUBSTITUTE);
-?>

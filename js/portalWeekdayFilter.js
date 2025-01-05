@@ -3,22 +3,41 @@ let filteredLines = [];
 // Listener für das Buchungsportal-Dropdown
 document.getElementById('portal-dropdown').addEventListener('change', () => {
     const selectedPortal = document.getElementById('portal-dropdown').value;
-    fetchLines('portal', selectedPortal);
-    document.getElementById('day-dropdown').value = 'none'; // Wochentag-Dropdown zurücksetzen
+
+    if (selectedPortal === 'none') {
+        clearLines();
+        console.log('Alle Linien entfernt, da "Keine" ausgewählt wurde.');
+    } else if (selectedPortal === 'all') {
+        fetchLines('portal', 'all');
+    } else {
+        fetchLines('portal', selectedPortal);
+    }
+
+    document.getElementById('day-dropdown').value = 'none';
 });
 
 // Listener für das Wochentag-Dropdown
 document.getElementById('day-dropdown').addEventListener('change', () => {
     const selectedDay = document.getElementById('day-dropdown').value;
-    fetchLines('day', selectedDay);
-    document.getElementById('portal-dropdown').value = 'none'; // Buchungsportal-Dropdown zurücksetzen
+
+    if (selectedDay === 'none') {
+        clearLines();
+        console.log('Alle Linien entfernt, da "Keine" ausgewählt wurde.');
+    } else if (selectedDay === 'all') {
+        fetchLines('day', 'all');
+    } else {
+        fetchLines('day', selectedDay);
+    }
+
+    document.getElementById('portal-dropdown').value = 'none';
 });
+
 
 // Funktion zum Abrufen und Anzeigen der Linien
 function fetchLines(filterType, filterValue) {
     const endpoint = filterType === 'portal'
-        ? `./php/getLinesByPortal.php?portal=${filterValue}`
-        : `./php/getLinesByDay.php?day=${filterValue}`;
+        ? `./php/portal-filter/getLinesByPortal.php?portal=${filterValue}`
+        : `./php/weekday-filter/getLinesByDay.php?day=${filterValue}`;
 
     const xhr = new XMLHttpRequest();
     xhr.open('GET', endpoint, true);
@@ -57,6 +76,7 @@ function updateMapWithLines(lines) {
 
         polyline.addTo(map);
         filteredLines.push(polyline);
+        lineFeatures.push(polyline);
     });
 }
 
@@ -64,4 +84,5 @@ function updateMapWithLines(lines) {
 function clearLines() {
     filteredLines.forEach(line => map.removeLayer(line));
     filteredLines.length = 0;
+    lineFeatures = lineFeatures.filter(line => !filteredLines.includes(line));
 }

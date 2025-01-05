@@ -7,7 +7,6 @@ $lines = [];
 
 $limit = intval($_GET['limit']);
 
-/* FIXME: Linien werden ncht richig angezeigt */
 $sql = "
     SELECT 
         Start_Lat, 

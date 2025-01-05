@@ -45,7 +45,9 @@ function checkboxListenerForLines(map) {
     const checkbox = document.getElementById('trend-lines');
     checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
-            lineFeatures.forEach(line => line.addTo(map));
+            if (lineFeatures.length > 0) {
+                lineFeatures.forEach(line => line.addTo(map));
+            }
         } else {
             lineFeatures.forEach(line => line.remove());
         }

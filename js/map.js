@@ -13,6 +13,8 @@ function initMap() {
     initMarkers();
     fetchStationsAndShowMarkers(map);
 
+    checkboxListenerForLines(map);
+
     /* Event-Listener für den "Laden"-Button */
     document.getElementById('loadLines').addEventListener('click', () => {
         const lineCount = parseInt(document.getElementById('lineCount').value, 10);
