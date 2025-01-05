@@ -14,7 +14,7 @@ function initMap() {
     initMarkers();
     fetchStationsAndShowMarkers(map);
 
-    /* Event-Listener für den Button */
+        /* Event-Listener für den Button */
     document.getElementById('loadLines').addEventListener('click', () => {
         const lineCount = parseInt(document.getElementById('lineCount').value, 10);
         if (lineCount > 0) {
@@ -39,26 +39,7 @@ function initMap() {
         }
     });
 
-    /* Legenden-Toggle-Event */
-    initLegend();
-
     return map;
-}
-
-/* Initialisiert die Legenden-Funktion */
-function initLegend() {
-    const legendToggle = document.getElementById('legendToggle');
-    const legendContent = document.getElementById('legendContent');
-
-    legendToggle.addEventListener('click', () => {
-        if (legendContent.classList.contains('hidden')) {
-            legendContent.classList.remove('hidden');
-            legendToggle.textContent = 'Legende ausblenden';
-        } else {
-            legendContent.classList.add('hidden');
-            legendToggle.textContent = 'Legende anzeigen';
-        }
-    });
 }
 
 /* Verarbeitet die Adresseingabe */

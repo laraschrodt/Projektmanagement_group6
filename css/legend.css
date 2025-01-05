@@ -1,0 +1,76 @@
+#legend-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#legend-toggle {
+    background-color: #007BFF; /* Blau */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#legend-toggle:hover {
+    background-color: #0056b3;
+}
+
+#legend-content {
+    position: fixed;
+    bottom: 80px; /* Über dem Button platzieren */
+    right: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px; /* Vergrößerter Abstand innen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    width: 280px; /* Vergrößerte Breite */
+}
+
+#legend-content p {
+    margin: 12px 0; /* Etwas größerer Abstand zwischen Zeilen */
+    font-size: 15px; /* Leicht größere Schrift */
+    display: flex;
+    align-items: center;
+}
+
+#legend-content p::before {
+    content: "";
+    display: inline-block;
+    width: 14px; /* Größere Punkte */
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#legend-content p:nth-child(1)::before {
+    background-color: green; /* Grün */
+}
+
+#legend-content p:nth-child(2)::before {
+    background-color: yellow; /* Gelb */
+}
+
+#legend-content p:nth-child(3)::before {
+    background-color: red; /* Rot */
+}
+
+#legend-content button {
+    background-color: #d9534f; /* Rot für Schließen */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#legend-content button:hover {
+    background-color: #c9302c;
+}

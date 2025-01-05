@@ -8,6 +8,7 @@
 
     <!-- CSS-Stile -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/legend.css"> <!-- Füge die Legende CSS hinzu -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
@@ -22,6 +23,9 @@
     <script src="js/map.js"></script>
     <script src="js/markerColors.js"></script>
     <script src="js/lines.js"></script>
+
+    <!-- Legende JavaScript -->
+    <script src="js/legend.js" defer></script> <!-- Füge das JavaScript für die Legende hinzu -->
 
     <!-- Zum Wechseln auf die Statistik-Seite-->
     <script>
@@ -69,18 +73,17 @@
     </div>
 </div>
 
-<!-- Legende -->
-<div id="legend" class="legend">
-    <button id="legendToggle">Legende anzeigen</button>
-    <div id="legendContent" class="legend-content hidden">
-        <h4>Legende</h4>
-        <ul>
-            <li><span class="legend-color green"></span> Wenig Abholungen/Abgaben</li>
-            <li><span class="legend-color yellow"></span> Mittel viele Abholungen/Abgaben</li>
-            <li><span class="legend-color red"></span> Viele Abholungen/Abgaben</li>
-        </ul>
+<!-- Legende-Komponente -->
+<div id="legend-container">
+    <button id="legend-toggle">Legende öffnen</button>
+    <div id="legend-content" style="display: none;">
+        <p><strong>Grün: </strong> wenige Abholungen/Abgaben</p>
+        <p><strong>Gelb: </strong> mittel viele Abholungen/Abgaben</p>
+        <p><strong>Rot: </strong> viele Abholungen/Abgaben</p>
+        <button id="legend-close">Legende schließen</button>
     </div>
-</div>
 
+</div>
 </body>
+
 </html>
