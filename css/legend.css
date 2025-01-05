@@ -1,0 +1,80 @@
+#legend-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#legend-toggle {
+    background-color: #007BFF; /* Blau */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#legend-toggle:hover {
+    background-color: #0056b3;
+}
+
+#legend-content {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    width: 320px;
+}
+
+#legend-content p {
+    margin: 10px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    line-height: 1.5;
+}
+
+#legend-content p::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+#legend-content p:nth-child(1)::before {
+    background-color: green;
+}
+
+#legend-content p:nth-child(2)::before {
+    background-color: yellow;
+}
+
+#legend-content p:nth-child(3)::before {
+    background-color: red;
+}
+
+#legend-content button {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#legend-content button:hover {
+    background-color: #c9302c;
+}
