@@ -23,6 +23,7 @@
     <script src="js/map.js"></script>
     <script src="js/markerColors.js"></script>
     <script src="js/lines.js"></script>
+    <script src="js/portalWeekdayFilter.js" defer></script>
     <script src="js/adressSearch.js"></script>
     <script src="js/legend.js"></script>
 
@@ -63,10 +64,30 @@
         <input type="radio" name="filter" id="both">Beides<br>
 
         <h3>Buchungsportal:</h3>
-        <input type="text" id="portal" name="portal">
+<!--        <input type="text" id="portal" name="portal">-->
+        <select id="portal-dropdown">
+            <option value="none" selected hidden>Bitte wählen</option>
+            <option value="all">Alle</option>
+            <option value="iPhone CAB">iPhone CAB</option>
+            <option value="Android CAB">Android CAB</option>
+            <option value="IVR">IVR</option>
+        </select>
 
         <h3>Wochentag wählen:</h3>
-        <input type="text" id="weekday" name="weekday"><br><br>
+
+        <select id="day-dropdown">
+            <option value="none" selected hidden>Bitte wählen</option>
+            <option value="all">Alle</option>
+            <option value="Mo">Montag</option>
+            <option value="Di">Dienstag</option>
+            <option value="Mi">Mittwoch</option>
+            <option value="Do">Donnerstag</option>
+            <option value="Fr">Freitag</option>
+            <option value="Sa">Samstag</option>
+            <option value="So">Sonntag</option>
+        </select>
+        <br> <br>
+
 
         <button onclick="loadStatistics()">Statistiken</button>
     </div>
