@@ -7,6 +7,7 @@
     <title>Call A Bike</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/legend.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
@@ -15,13 +16,14 @@
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
 
-    <!-- Eingebundene Datein -->
+    <!-- Eingebundene Dateien -->
     <script src="js/markers.js"></script>
     <script src="js/map.js"></script>
     <script src="js/markerColors.js"></script>
     <script src="js/lines.js"></script>
+    <script src="js/legend.js" defer></script>
 
-    <!-- Zum Wechseln auf die Statistik-Seite-->
+    <!-- Zum Wechseln auf die Statistik-Seite -->
     <script>
         function loadStatistics() {
             const url = "html/statistics.html";
@@ -65,7 +67,19 @@
         <button onclick="loadStatistics()">Statistiken</button>
     </div>
 </div>
+
+<!-- Legende-Komponente -->
+<div id="legend-container">
+    <button id="legend-toggle">Legende öffnen</button>
+    <div id="legend-content" style="display: none;">
+        <p><strong>Grün:&nbsp;</strong> wenige Abholungen/Abgaben</p>
+        <p><strong>Gelb:&nbsp;</strong> mittel viele Abholungen/Abgaben</p>
+        <p><strong>Rot:&nbsp;</strong> viele Abholungen/Abgaben</p>
+
+        <button id="legend-close">Legende schließen</button>
+    </div>
+</div>
+
 </body>
 
 </html>
-

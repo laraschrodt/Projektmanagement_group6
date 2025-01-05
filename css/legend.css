@@ -29,14 +29,16 @@
     padding: 20px; /* Vergrößerter Abstand innen */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1001;
-    width: 280px; /* Vergrößerte Breite */
+    width: 320px; /* Vergrößerte Breite */
 }
 
 #legend-content p {
-    margin: 12px 0; /* Etwas größerer Abstand zwischen Zeilen */
+    margin: 10px 0; /* Gleichmäßiger Abstand zwischen Zeilen */
     font-size: 15px; /* Leicht größere Schrift */
-    display: flex;
-    align-items: center;
+    display: flex; /* Ermöglicht saubere Ausrichtung */
+    align-items: flex-start; /* Text beginnt oben */
+    flex-wrap: wrap; /* Zeilenumbruch aktivieren */
+    line-height: 1.5; /* Zeilenhöhe für besseren Abstand */
 }
 
 #legend-content p::before {
@@ -45,7 +47,9 @@
     width: 14px; /* Größere Punkte */
     height: 14px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 10px; /* Abstand zwischen Punkt und Text */
+    margin-top: 4px; /* Punkt vertikal ausrichten */
+    flex-shrink: 0; /* Punkt bleibt immer in der ersten Zeile */
 }
 
 #legend-content p:nth-child(1)::before {
