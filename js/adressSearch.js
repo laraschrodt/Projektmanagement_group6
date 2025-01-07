@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 suggestion.addEventListener("click", function () {
                     addressInput.value = station.station_name;
                     suggestionsBox.style.display = "none";
-
                     showStationOnMap(station);
                 });
 
@@ -67,7 +66,47 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    window.placeManualMarker = function () {
+        map.getContainer().style.cursor = "crosshair";
+
+        map.once("click", function (event) {
+            const { lat, lng } = event.latlng;
+
+            const station = {
+                lat: lat,
+                long: lng,
+                station_name: "Benutzerdefinierter Punkt",
+                station_id: "N/A",
+                startvorgaenge: 0,
+                endvorgaenge: 0
+            };
+
+            showMarkerOnMap(station, map);
+
+            map.getContainer().style.cursor = "";
+            findNearestStation([lat, lng]);
+        });
+    };
+
     /* Funktion zur Anzeige einer Station auf der Karte */
+    function showMarkerOnMap(station, map) {
+        const markerIcon = station.station_name === "Benutzerdefinierter Punkt" ? blueMarker : determineMarkerColor(station);
+
+        const marker = new L.marker([station.lat, station.long], {
+            clickable: true,
+            icon: markerIcon,
+        }).bindPopup(`<p><b>Station: ${station.station_name}</b><br>
+                        ID: ${station.station_id}<br>
+                        Startvorgänge: ${station.startvorgaenge}<br>
+                        Endvorgänge: ${station.endvorgaenge}<br></p>`)
+            .addTo(map);
+
+        if (customMarker) {
+            map.removeLayer(customMarker);
+        }
+        customMarker = marker;
+    }
+
     function showStationOnMap(station) {
         const coordinates = [parseFloat(station.longitude), parseFloat(station.latitude)];
 
@@ -108,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             .addTo(map);
 
                         map.setView(coordinates, 15);
-
                         findNearestStation(coordinates);
                     }
                 } catch (error) {
@@ -150,7 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     if (nearestStation) {
-                        console.log(`Nächstgelegene Station: ${nearestStation.name}, Entfernung: ${nearestStation.distance} km`);
                         calculateAndShowRoute(coordinates, [nearestStation.longitude, nearestStation.latitude]);
                     } else {
                         console.warn("Keine Stationen gefunden.");
@@ -163,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         xhr.send();
     }
-
 
     /* Funktion zur Routenberechnung und Anzeige */
     function calculateAndShowRoute(startCoordinates, endCoordinates) {
@@ -187,10 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         routingLayer = L.geoJSON(route, {
                             style: { color: 'blue', weight: 4 }
                         }).addTo(map);
-
-                        console.log("Route erfolgreich angezeigt.");
-                    } else {
-                        console.error("Keine Route gefunden.");
                     }
                 } catch (error) {
                     console.error("Fehler beim Parsen der Routing-Daten:", error);
