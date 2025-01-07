@@ -1,6 +1,5 @@
 function initMap() {
     map = L.map('map', {
-        center: [50.112, 8.684],
         zoom: 15,
         zoomControl: true
     });
@@ -10,20 +9,13 @@ function initMap() {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    initMarkers();
+    /* verschiedene Markerfarben initialisieren, damit man mit ihnen in showMarker() arbeiten kann */
+    initMarkerColors();
+
+    /* Marker aus DB auf Map anzeigen */
     fetchStationsAndShowMarkers(map);
 
-    checkboxListenerForLines(map);
-
-    /* Event-Listener für den "Laden"-Button */
-    document.getElementById('loadLines').addEventListener('click', () => {
-        const lineCount = parseInt(document.getElementById('lineCount').value, 10);
-        if (lineCount > 0) {
-            fetchTopLinesAndShowWithLimit(map, lineCount);
-        } else {
-            alert('Bitte geben Sie eine gültige Anzahl ein.');
-        }
-    });
+    checkboxListenersForLines(map);
 
     return map;
 }

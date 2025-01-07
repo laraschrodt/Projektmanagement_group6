@@ -1,32 +1,55 @@
-var lineFeatures = [];
-var lineGroup;
+var arrayForLines = []; /* Array, dem alle Lines hinzugefügt werden */
+
+/* Event-Listener für die Checkbox und en "Laden"-Button */
+function checkboxListenersForLines(map) {
+
+    /* Event-Listener für die Checkbox */
+    const checkbox = document.getElementById('trend-lines');
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) { /* Wenn Checkbox "checked" ist werden Lines zur Karte hinzugefügt */
+            if (arrayForLines.length > 0) {
+                arrayForLines.forEach(line => line.addTo(map));
+            }
+        } else {
+            arrayForLines.forEach(line => line.remove()); /* Wenn Checkbox "nicht-checked" ist werden Lines von Karte entfernt */
+        }
+    });
+
+    /* Event-Listener für den "Laden"-Button */
+    document.getElementById('loadLines').addEventListener('click', () => {
+        const limit = parseInt(document.getElementById('limit').value, 10);
+        if (limit > 0) {
+            fetchTopLinesAndShowWithLimit(map, limit); /* Läd limitierte Anzahl an Verbindungen auf die Karte */
+        } else {
+            alert('Bitte geben Sie eine gültige Anzahl ein.');
+        }
+    });
+}
 
 /* Asynchrone AJAX-Anfrage für Verbindungen */
 function fetchTopLinesAndShowWithLimit(map, limit) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `./php/getLinesFromDB.php?limit=${limit}`, true);
+    xhr.open('GET', `./php/getLinesFromDB.php?limit=${limit}`, true); /* nimmt limit aus dem Event-Listener für den "Laden"-Button */
 
     xhr.onload = () => {
         if (xhr.status === 200) {
             console.log(`Erfolgreich geladen: ${xhr.responseText}`);
+
             const lines = JSON.parse(xhr.responseText);
 
-            if (lineGroup) {
-                lineGroup.clearLayers();
-            }
-
-            lineFeatures.forEach(line => line.remove());
-            lineFeatures = [];
-            lineGroup = null;
+            /* Sicherstellen, dass alle bisher hinzugefügten Linien entfernt werden*/
+            arrayForLines.forEach(line => line.remove()); /* Entfernt Lines von der Karte */
+            arrayForLines = []; /* Entfernt die Referenzen auf die Lines */
+            featureGroup = null; /* entfernt Referenz auf Feature Group */
 
             lines.forEach((line) => {
                 showLine(line, map);
             });
 
-            checkboxListenerForLines(map);
+            checkboxListenersForLines(map);
 
-            if (lineGroup) {
-                map.fitBounds(lineGroup.getBounds());
+            if (featureGroup) {
+                map.fitBounds(featureGroup.getBounds());
             }
         } else {
             console.error("Fehler beim Laden der Daten:", xhr.statusText);
@@ -39,21 +62,6 @@ function fetchTopLinesAndShowWithLimit(map, limit) {
 
     xhr.send();
 }
-
-/* Event-Listener für die Checkbox */
-function checkboxListenerForLines(map) {
-    const checkbox = document.getElementById('trend-lines');
-    checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-            if (lineFeatures.length > 0) {
-                lineFeatures.forEach(line => line.addTo(map));
-            }
-        } else {
-            lineFeatures.forEach(line => line.remove());
-        }
-    });
-}
-
 
 /* Linie auf die Karte zeichnen */
 function showLine(line, map) {
@@ -74,6 +82,6 @@ function showLine(line, map) {
                  </p>`)
         .addTo(map);
 
-    lineFeatures.push(polyline);
-    lineGroup = new L.featureGroup(lineFeatures);
+    arrayForLines.push(polyline);
+    featureGroup = new L.featureGroup(arrayForLines);
 }

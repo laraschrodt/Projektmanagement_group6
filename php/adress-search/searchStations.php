@@ -1,4 +1,6 @@
 <?php
+/* verwendet in adressSearch.js, um input-ähnliche Stationen in der DB zu finden */
+
 header('Content-Type: application/json; charset=utf-8');
 $verbindung = include('../db-connection.php');
 

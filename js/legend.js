@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const legendClose = document.getElementById('legend-close');
 
     legendToggle.addEventListener('click', function () {
-        console.log('Legende-Button geklickt');
         legendContent.style.display = 'block';
         legendToggle.style.display = 'none';
     });

@@ -1,11 +1,13 @@
 <?php
+/* benutzt in fetchTopLinesAndShowWithLimit(), um limitierte Anzahl an lines auf Karte zu laden*/
+
 header('Content-Type: application/json; charset=utf-8');
 $verbindung = include('db-connection.php');
 
 $table = "Fahrradbuchungen";
 $lines = [];
 
-$limit = intval($_GET['limit']);
+$limit = intval($_GET['limit']); /* holt limit aus der URL (Query-String) */
 
 $sql = "
     SELECT 

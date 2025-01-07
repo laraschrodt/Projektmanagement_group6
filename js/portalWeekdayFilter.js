@@ -6,7 +6,6 @@ document.getElementById('portal-dropdown').addEventListener('change', () => {
 
     if (selectedPortal === 'none') {
         clearLines();
-        console.log('Alle Linien entfernt, da "Keine" ausgewählt wurde.');
     } else if (selectedPortal === 'all') {
         fetchLines('portal', 'all');
     } else {
@@ -76,7 +75,7 @@ function updateMapWithLines(lines) {
 
         polyline.addTo(map);
         filteredLines.push(polyline);
-        lineFeatures.push(polyline);
+        arrayForLines.push(polyline);
     });
 }
 
@@ -84,5 +83,5 @@ function updateMapWithLines(lines) {
 function clearLines() {
     filteredLines.forEach(line => map.removeLayer(line));
     filteredLines.length = 0;
-    lineFeatures = lineFeatures.filter(line => !filteredLines.includes(line));
+    arrayForLines = arrayForLines.filter(line => !filteredLines.includes(line));
 }

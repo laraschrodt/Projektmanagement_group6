@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         suggestionsBox.innerHTML = "";
         if (results.length > 0) {
             results.forEach(station => {
-                const suggestion = document.createElement("div");
+                const suggestion = document.createElement("div"); /* für jede suggestion ein div */
                 suggestion.textContent = station.station_name;
                 suggestion.classList.add("suggestion-item");
 
@@ -178,7 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Funktion zur Routenberechnung und Anzeige */
     function calculateAndShowRoute(startCoordinates, endCoordinates) {
-
+        /* FIXME */
+        /* TODO: Routing Informationen anzeigen */
+        /* TODO: Route auf walking setzen */
+        /* TODO: Heatmap oder das was Kimia hat */
         const url = `https://router.project-osrm.org/route/v1/walking/${startCoordinates[1]},${startCoordinates[0]};${endCoordinates[1]},${endCoordinates[0]}?overview=full&geometries=geojson`;
 
         const xhr = new XMLHttpRequest();
