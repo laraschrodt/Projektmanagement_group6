@@ -132,26 +132,28 @@ document.addEventListener("DOMContentLoaded", function () {
                     let nearestStation = null;
                     let minDistance = Infinity;
 
-                    stations.forEach(station => {
-                        const stationLatitude = parseFloat(station.lat);
-                        const stationLongitude = parseFloat(station.long);
+                    const userLatLng = L.latLng(coordinates[0], coordinates[1]);
 
-                        const distance = calculateDistance(
-                            coordinates[1], coordinates[0],
-                            stationLatitude, stationLongitude
-                        );
+                    stations.forEach(station => {
+                        const stationLatLng = L.latLng(parseFloat(station.long), parseFloat(station.lat));
+                        const distance = userLatLng.distanceTo(stationLatLng);
 
                         if (distance < minDistance) {
                             minDistance = distance;
                             nearestStation = {
-                                latitude: stationLatitude,
-                                longitude: stationLongitude,
+                                latitude: parseFloat(station.lat),
+                                longitude: parseFloat(station.long),
+                                name: station.station_name,
+                                distance: (distance / 1000).toFixed(2)
                             };
                         }
                     });
 
                     if (nearestStation) {
+                        console.log(`Nächstgelegene Station: ${nearestStation.name}, Entfernung: ${nearestStation.distance} km`);
                         calculateAndShowRoute(coordinates, [nearestStation.longitude, nearestStation.latitude]);
+                    } else {
+                        console.warn("Keine Stationen gefunden.");
                     }
                 } catch (error) {
                     console.error("Fehler beim Parsen der Stationsdaten:", error);
@@ -162,19 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.send();
     }
 
-    /* Funktion zur Berechnung der Entfernung */
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-        const R = 6371; /* Radius der Erde in km */
-        const dLat = ((lat2 - lat1) * Math.PI) / 180;
-        const dLon = ((lon2 - lon1) * Math.PI) / 180;
-        const a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos((lat1 * Math.PI) / 180) *
-            Math.cos((lat2 * Math.PI) / 180) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return R * c;
-    }
 
     /* Funktion zur Routenberechnung und Anzeige */
     function calculateAndShowRoute(startCoordinates, endCoordinates) {
