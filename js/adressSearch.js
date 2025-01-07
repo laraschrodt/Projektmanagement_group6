@@ -178,10 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Funktion zur Routenberechnung und Anzeige */
     function calculateAndShowRoute(startCoordinates, endCoordinates) {
-        /* FIXME */
-        /* TODO: Routing Informationen anzeigen */
-        /* TODO: Route auf walking setzen */
-        /* TODO: Heatmap oder das was Kimia hat */
         const url = `https://router.project-osrm.org/route/v1/walking/${startCoordinates[1]},${startCoordinates[0]};${endCoordinates[1]},${endCoordinates[0]}?overview=full&geometries=geojson`;
 
         const xhr = new XMLHttpRequest();

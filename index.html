@@ -50,6 +50,7 @@
     <div>
         <h3>Adresseingabe:</h3>
         <input type="text" id="address" name="address" placeholder="Adresse oder Station eingeben">
+        <button id="searchButton" class="button" style="margin-top: 8px;">Manuell Marker setzen</button>
         <div id="suggestions"></div>
 
         <h3>Wähle eine Visualisierung:</h3>
@@ -58,7 +59,7 @@
 
         <h3>Meistgenutzte Verbindungen:</h3>
         <input type="number" id="limit" min="1" />
-        <button id="loadLines">Laden</button>
+        <button id="loadLines" class="button">Laden</button>
 
         <h3>Filter für Stationen:</h3>
         <input type="radio" name="filter" id="pickups">Nur Startvorgänge anzeigen<br>
@@ -94,7 +95,7 @@
         </select>
         <br> <br>
 
-        <button onclick="loadStatistics()">Statistiken</button>
+        <button onclick="loadStatistics()" class="button">Statistiken</button>
     </div>
 </div>
 

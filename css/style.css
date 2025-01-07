@@ -72,3 +72,18 @@ form input[type="text"] {
     margin-top: 5px;
     display: none;
 }
+
+.button {
+    padding: 5px 10px;
+    background-color: rgb(244, 51, 53);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgb(200, 40, 40);
+}
