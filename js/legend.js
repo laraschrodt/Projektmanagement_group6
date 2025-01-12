@@ -20,21 +20,21 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateLegend() {
         if (document.getElementById('pickups').checked) {
             legendText.innerHTML = `
-                <p><b>Filter: Pickups</b></p>
+                <p><b>Startvorgänge</b></p>
                 <p>🔴: > 50 Startvorgänge</p>
                 <p>🟡: 20–50 Startvorgänge</p>
                 <p>🟢: < 20 Startvorgänge</p>
             `;
         } else if (document.getElementById('dropoffs').checked) {
             legendText.innerHTML = `
-                <p><b>Filter: Dropoffs</b></p>
+                <p><b>Endvorgänge</b></p>
                 <p>🔴: > 50 Endvorgänge</p>
                 <p>🟡: 20–50 Endvorgänge</p>
                 <p>🟢: < 20 Endvorgänge</p>
             `;
         } else if (document.getElementById('both').checked) {
             legendText.innerHTML = `
-                <p><b>Filter: Both (Verhältnis Start/End)</b></p>
+                <p><b>Beides (Verhältnis Start/End)</b></p>
                 <p>🔴: > 1.3 oder < 0.77</p>
                 <p>🟡: 0.9–1.3</p>
                 <p>🟢: Ausgeglichen</p>

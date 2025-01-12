@@ -76,9 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 lat: lat,
                 long: lng,
                 station_name: "Benutzerdefinierter Punkt",
-                station_id: "N/A",
-                startvorgaenge: 0,
-                endvorgaenge: 0
             };
 
             showMarkerOnMap(station, map);
@@ -95,10 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const marker = new L.marker([station.lat, station.long], {
             clickable: true,
             icon: markerIcon,
-        }).bindPopup(`<p><b>Station: ${station.station_name}</b><br>
-                        ID: ${station.station_id}<br>
-                        Startvorgänge: ${station.startvorgaenge}<br>
-                        Endvorgänge: ${station.endvorgaenge}<br></p>`)
+        }).bindPopup(`<p><b>${station.station_name}</b></p>`)
             .addTo(map);
 
         if (customMarker) {
